@@ -1,0 +1,70 @@
+@startuml ClassScheme
+
+class Element {
+	int id
+	string code
+	--
+	headers/Element.h
+}
+
+class City {
+	string name
+	int population
+	int demand
+	--
+	headers/City.h
+}
+
+class Reservoir {
+	string name
+	string municipality
+	int maxDelivery
+	--
+	headers/Reservoir.h
+}
+
+class Station {
+	--
+	headers/Station.h
+}
+
+class Graph {
+	Graph as used in DA/AED
+	pratical lessons
+	--
+	headers/Graph.h
+}
+
+class Manager {
+	Contains all the information
+	and methods to operate over 
+	the dataset
+	--
+	headers/Manager.h
+	src/managerLoad.cpp
+	src/managerPipes.cpp
+	src/managerReliability.cpp
+	src/managerWork.cpp
+}
+
+class Ui {
+	Main entry point 
+	for the program
+	--
+	headers/Ui.h
+	src/ui.cpp
+	src/uiBalanceNetwork.cpp
+	src/uiMaxFlow.cpp
+	src/uiMeetDemands.cpp
+	src/uiRemovePipe.cpp
+	src/uiRemovePS.cpp
+	src/uiRemoveReservoir.cpp
+}
+
+Element <|.. City
+Element <|.. Reservoir
+Element <|.. Station
+Graph "*" -- "*" Element
+Ui "1" -- "1" Manager
+Manager "1" -- "1" Graph
+@enduml
